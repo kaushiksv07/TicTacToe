@@ -19,7 +19,7 @@ public class DiagnolWinStratergy implements WinStratergy{
             for (int i = 0; i < size; i++) {
                 Cell cell = board.getCells().get(i).get(i);
 
-                if (cell.getCellSatus() == CellSatus.EMPTY || !cell.getPlayer().equals(player)) {
+                if (cell.getCellSatus() == CellSatus.EMPTY || cell.getPlayer() == null || !cell.getPlayer().equals(player)) {
                     mainDiagonalWin = false;
                     break;
                 }
@@ -33,7 +33,7 @@ public class DiagnolWinStratergy implements WinStratergy{
             for (int i = 0; i < size; i++) {
                 Cell cell = board.getCells().get(i).get(size - i - 1);
 
-                if (cell.getCellSatus() == CellSatus.EMPTY || !cell.getPlayer().equals(player)) {
+                if (cell.getCellSatus() == CellSatus.EMPTY || cell.getPlayer() == null || !cell.getPlayer().equals(player)) {
                     antiDiagonalWin = false;
                     break;
                 }

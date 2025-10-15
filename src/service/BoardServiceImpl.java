@@ -52,4 +52,16 @@ public class BoardServiceImpl implements BoardService {
         board.setSize(boardSize);
         return board;
     }
+
+    public boolean isBoardFull(int boardSize) {
+        for(int i = 0; i < boardSize; i++) {
+            for(int j = 0; j < boardSize; j++) {
+                Cell cell = cellRepo.getCellData(i, j);
+                if(cell == null || cell.getCellSatus() == CellSatus.EMPTY) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

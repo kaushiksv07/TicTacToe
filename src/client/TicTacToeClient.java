@@ -42,8 +42,11 @@ public class TicTacToeClient {
 
         //move
         GameSatus gameSatus =  gameController.getGameStatus();
-        while (gameSatus.equals(GameSatus.INPROGRESS)) {
+        while (true) {
             try {
+                if (!gameController.getGameStatus().equals(GameSatus.INPROGRESS)) {
+                    break;
+                }
                 gameController.movePlayer();
             } catch (InvalidMoveException | CellAlreadyOccupiedException e) {
                 System.out.println("⚠️ " + e.getMessage());

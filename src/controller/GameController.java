@@ -86,18 +86,25 @@ public class GameController {
         }
 
 
-        cellService.saveCellDetails(row, col, players.get(curIdx));
+        Cell updatedCell = cellService.saveCellDetails(row, col, players.get(curIdx));
 
-//        boardService.getBoard();
+
+        board.getCells().get(row).set(col, updatedCell);
         boardService.displayBoard(board);
 
         for(WinStratergy winStratergy: winStrategies){
             if(winStratergy.checkWinPossible(board, game.getPlayers().get(curIdx), row, col)){
                 game.setGameSatus(GameSatus.WIN);
+                System.out.println(players.get(curIdx).getSymbol().getSymbol() + " wins!");
                 return;
             }
         }
 
+        if(boardService.isBoardFull(boardSize)){
+            game.setGameSatus(GameSatus.DRAW);
+            System.out.println("\n🤝 It’s a DRAW! Great match!");
+            return;
+        }
         curIdx = (curIdx + 1) % players.size();
         game.setCurrentPlayerIdx(curIdx);
 
