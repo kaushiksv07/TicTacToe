@@ -4,14 +4,21 @@ import java.util.List;
 
 public class Board {
     private int size;
-    private List<Cell> cells;
+    private List<List<Cell>> cells;
 
-    public void displayBoard(){
-        for(int i = 0; i < size+1; i++){
-            for(int j = 0; j < size+1; j++){
-                Cell cell = new Cell(i, j);
-                cell.displayCell();
-            }
-        }
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public List<List<Cell>> getCells() {
+        return cells;
+    }
+
+    public void setCells(List<List<Cell>> cells) {
+        this.cells = cells;
     }
 }

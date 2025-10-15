@@ -4,5 +4,5 @@ import models.Board;
 import models.Player;
 
 public interface WinStratergy {
-    boolean checkWinPossible(Board board, Player player);
+    boolean checkWinPossible(Board board, Player player, int row, int col);
 }
